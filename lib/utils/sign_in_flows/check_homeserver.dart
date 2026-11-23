@@ -60,6 +60,8 @@ Future<void> connectToHomeserverFlow(
     } else if (supportsSso) {
       await ssoLoginFlow(client, context, signUp, loginFlows);
     } else {
+      // MUQAM: without a registration link, sign up happens in the app.
+      final signUpInApp = signUp && regLink == null;
       if (signUp && regLink != null) {
         await launchUrlString(regLink);
       }
@@ -73,7 +75,7 @@ Future<void> connectToHomeserverFlow(
       if (const {'sign_in', 'sign_up'}.contains(pathSegments.last)) {
         pathSegments.removeLast();
       }
-      pathSegments.add('login');
+      pathSegments.add(signUpInApp ? 'register' : 'login');
       context.push('/${pathSegments.join('/')}', extra: client);
       setState(AsyncSnapshot.withData(ConnectionState.done, true));
       return;

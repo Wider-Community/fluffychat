@@ -98,10 +98,16 @@ class _IntroPagePresenterState extends State<IntroPagePresenter> {
     }
   }
 
-  void _login() {
+  void _login() => _connect(signUp: false);
+
+  void _signUp() => _connect(signUp: true);
+
+  void _connect({required bool signUp}) {
     final presetHomeserver = AppSettings.presetHomeserver.value;
     if (presetHomeserver.isEmpty) {
-      context.go('${GoRouterState.of(context).uri.path}/sign_in');
+      context.go(
+        '${GoRouterState.of(context).uri.path}/${signUp ? 'sign_up' : 'sign_in'}',
+      );
       return;
     }
 
@@ -109,7 +115,7 @@ class _IntroPagePresenterState extends State<IntroPagePresenter> {
       PublicHomeserverData(name: presetHomeserver),
       context,
       (snapshot) {},
-      false,
+      signUp,
     );
   }
 
@@ -123,6 +129,7 @@ class _IntroPagePresenterState extends State<IntroPagePresenter> {
           ? null
           : AppSettings.welcomeText.value,
       login: _login,
+      signUp: _signUp,
     );
   }
 }

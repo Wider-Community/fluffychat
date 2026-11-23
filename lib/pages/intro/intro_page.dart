@@ -9,6 +9,7 @@ import 'package:fluffychat/pages/intro/flows/restore_backup_flow.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/muqam_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -16,7 +17,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 class IntroPage extends StatelessWidget {
   final bool isLoading, hasPresetHomeserver;
   final String? loggingInToHomeserver, welcomeText;
-  final VoidCallback login;
+  final VoidCallback login, signUp;
 
   const IntroPage({
     required this.isLoading,
@@ -25,6 +26,7 @@ class IntroPage extends StatelessWidget {
     required this.hasPresetHomeserver,
     required this.welcomeText,
     required this.login,
+    required this.signUp,
   });
 
   @override
@@ -112,10 +114,7 @@ class IntroPage extends StatelessWidget {
                           // then the promise in two beats (brand voice).
                           Padding(
                             padding: const EdgeInsets.fromLTRB(32, 56, 32, 40),
-                            child: Hero(
-                              tag: 'info-logo',
-                              child: _MuqamLockup(),
-                            ),
+                            child: Hero(tag: 'info-logo', child: MuqamLockup()),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -169,21 +168,18 @@ class IntroPage extends StatelessWidget {
                               mainAxisSize: .min,
                               crossAxisAlignment: .stretch,
                               children: [
-                                if (!hasPresetHomeserver)
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          theme.colorScheme.secondary,
-                                      foregroundColor:
-                                          theme.colorScheme.onSecondary,
-                                    ),
-                                    onPressed: () => context.go(
-                                      '${GoRouterState.of(context).uri.path}/sign_up',
-                                    ),
-                                    child: Text(
-                                      L10n.of(context).createNewAccount,
-                                    ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        theme.colorScheme.secondary,
+                                    foregroundColor:
+                                        theme.colorScheme.onSecondary,
                                   ),
+                                  onPressed: signUp,
+                                  child: Text(
+                                    L10n.of(context).createNewAccount,
+                                  ),
+                                ),
                                 SizedBox(height: 16),
                                 ElevatedButton(
                                   onPressed: login,
@@ -217,39 +213,6 @@ class IntroPage extends StatelessWidget {
                 );
               },
             ),
-    );
-  }
-}
-
-/// MUQAM: the Within mark beside the MUQAM wordmark, drawn with no circle.
-class _MuqamLockup extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final dark = theme.brightness == Brightness.dark;
-    // The lockup reads left to right in every language.
-    return Row(
-      mainAxisSize: .min,
-      textDirection: TextDirection.ltr,
-      spacing: 16,
-      children: [
-        Image.asset(
-          dark
-              ? './assets/logo/mini/muqam_mark_lapis.png'
-              : './assets/logo/mini/muqam_mark_deep_lapis.png',
-          height: 44,
-          semanticLabel: 'MUQAM',
-        ),
-        Text(
-          'MUQAM',
-          style: TextStyle(
-            fontSize: 34,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 6,
-            color: theme.colorScheme.onSurface,
-          ),
-        ),
-      ],
     );
   }
 }

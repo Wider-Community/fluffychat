@@ -2870,5 +2870,19 @@
     "startConversationDescription": "Choose from your existing conversations, or start a new one.",
     "members": "Members",
     "callsNotSetUpOnServer": "Calls are not set up on this server yet.",
-    "muqamPromiseSecond": "Wear the right hat in every MUQAM."
+    "muqamPromiseSecond": "Wear the right hat in every MUQAM.",
+    "muqamWelcomeBack": "Welcome back",
+    "muqamSignInSubtitle": "Sign in to continue to your MUQAM.",
+    "muqamCreateAccountTitle": "Create your account",
+    "muqamSignUpSubtitle": "One account for every MUQAM you belong to.",
+    "muqamUsername": "Username",
+    "muqamUsernameInvalid": "Use lowercase letters, numbers, dots, dashes or underscores.",
+    "muqamUsernameTaken": "This username is taken. Try another one.",
+    "muqamInviteCode": "Invite code",
+    "muqamInviteCodeHelp": "You get it from whoever invited you to MUQAM.",
+    "muqamPleaseEnterInviteCode": "Please enter your invite code",
+    "muqamInviteCodeInvalid": "This invite code is not valid.",
+    "muqamCreateAccount": "Create account",
+    "muqamNoAccount": "New to MUQAM?",
+    "muqamHaveAccount": "Already have an account?"
 }

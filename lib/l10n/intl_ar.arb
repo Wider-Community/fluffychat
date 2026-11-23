@@ -2767,5 +2767,19 @@
     "startConversationDescription": "اختر من محادثاتك الحالية، أو ابدأ محادثة جديدة.",
     "members": "المقيمون",
     "callsNotSetUpOnServer": "المكالمات غير مفعّلة على هذا الخادم بعد.",
-    "muqamPromiseSecond": "وكن بالدور المناسب في كل مُقام."
+    "muqamPromiseSecond": "وكن بالدور المناسب في كل مُقام.",
+    "muqamWelcomeBack": "مرحبًا بعودتك",
+    "muqamSignInSubtitle": "سجّل الدخول لتكمل إلى مُقامك.",
+    "muqamCreateAccountTitle": "أنشئ حسابك",
+    "muqamSignUpSubtitle": "حساب واحد لكل مُقام تنتمي إليه.",
+    "muqamUsername": "اسم المستخدم",
+    "muqamUsernameInvalid": "استخدم حروفًا إنجليزية صغيرة أو أرقامًا أو نقاطًا أو شرطات.",
+    "muqamUsernameTaken": "اسم المستخدم هذا محجوز. جرّب اسمًا آخر.",
+    "muqamInviteCode": "رمز الدعوة",
+    "muqamInviteCodeHelp": "تحصل عليه ممّن دعاك إلى مُقام.",
+    "muqamPleaseEnterInviteCode": "يُرجى إدخال رمز الدعوة",
+    "muqamInviteCodeInvalid": "رمز الدعوة هذا غير صالح.",
+    "muqamCreateAccount": "إنشاء الحساب",
+    "muqamNoAccount": "جديد في مُقام؟",
+    "muqamHaveAccount": "لديك حساب بالفعل؟"
 }

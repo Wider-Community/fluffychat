@@ -81,7 +81,7 @@ class LoginScaffold extends StatelessWidget {
                                 ? const BoxConstraints()
                                 : const BoxConstraints(
                                     maxWidth: 480,
-                                    maxHeight: 640,
+                                    maxHeight: 720,
                                   ),
                             child: Scaffold(
                               key: const Key('LoginScaffold'),
