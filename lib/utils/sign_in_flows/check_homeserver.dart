@@ -67,7 +67,12 @@ Future<void> connectToHomeserverFlow(
       final pathSegments = List.of(
         GoRouter.of(context).routeInformationProvider.value.uri.pathSegments,
       );
-      if (pathSegments.last != 'home') pathSegments.removeLast();
+      // From the sign in or sign up page, open login next to it. With a
+      // preset homeserver the intro page (/home or .../addaccount) starts
+      // this flow itself, and login is a child of that page.
+      if (const {'sign_in', 'sign_up'}.contains(pathSegments.last)) {
+        pathSegments.removeLast();
+      }
       pathSegments.add('login');
       context.push('/${pathSegments.join('/')}', extra: client);
       setState(AsyncSnapshot.withData(ConnectionState.done, true));
