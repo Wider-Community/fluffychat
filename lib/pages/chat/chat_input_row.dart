@@ -143,8 +143,8 @@ class ChatInputRow extends StatelessWidget {
                     clipBehavior: Clip.hardEdge,
                     child: PopupMenuButton<AddPopupMenuActions>(
                       useRootNavigator: true,
-                      icon: const Icon(Icons.add_circle_outline),
-                      iconColor: theme.colorScheme.onPrimaryContainer,
+                      icon: const Icon(Icons.attach_file),
+                      iconColor: theme.colorScheme.onSurfaceVariant,
                       onSelected: controller.onAddPopupMenuButtonSelected,
                       itemBuilder: (BuildContext context) => [
                         if (PlatformInfos.isMobile)
@@ -259,11 +259,11 @@ class ChatInputRow extends StatelessWidget {
                     alignment: Alignment.center,
                     child: IconButton(
                       tooltip: L10n.of(context).emojis,
-                      color: theme.colorScheme.onPrimaryContainer,
+                      color: theme.colorScheme.onSurfaceVariant,
                       icon: Icon(
                         controller.showEmojiPicker
                             ? Icons.keyboard
-                            : Icons.add_reaction_outlined,
+                            : Icons.sentiment_satisfied_outlined,
                         key: ValueKey(controller.showEmojiPicker),
                       ),
                       onPressed: controller.emojiPickerAction,
@@ -304,12 +304,11 @@ class ChatInputRow extends StatelessWidget {
                             top: 3.0,
                           ),
                           counter: const SizedBox.shrink(),
-                          hintText: controller.room.encrypted
-                              ? L10n.of(context).encryptedMessage
-                              : L10n.of(context).unencryptedMessage,
+                          hintText: L10n.of(context).typeYourMessageHere,
                           hintMaxLines: 1,
                           border: InputBorder.none,
                           enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
                           filled: false,
                         ),
                         onChanged: controller.onInputBarChanged,
@@ -379,7 +378,7 @@ class ChatInputRow extends StatelessWidget {
                               backgroundColor: theme.bubbleColor,
                               foregroundColor: theme.onBubbleColor,
                             ),
-                            icon: const Icon(Icons.send_outlined),
+                            icon: const Icon(Icons.send_rounded, size: 20),
                           ),
                   ),
                 ],

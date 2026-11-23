@@ -236,9 +236,8 @@ class ChatEventList extends StatelessWidget {
                               borderRadius: BorderRadius.circular(
                                 AppConfig.borderRadius * 2,
                               ),
-                              color: theme.colorScheme.inverseSurface.withAlpha(
-                                200,
-                              ),
+                              // MUQAM: a quiet date label, as in the Wider chat.
+                              color: theme.colorScheme.surface.withAlpha(220),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 8.0,
@@ -247,8 +246,8 @@ class ChatEventList extends StatelessWidget {
                                 child: Text(
                                   event.originServerTs.localizedDate(context),
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: theme.colorScheme.onInverseSurface,
+                                    fontSize: 15,
+                                    color: theme.colorScheme.onSurfaceVariant,
                                   ),
                                 ),
                               ),

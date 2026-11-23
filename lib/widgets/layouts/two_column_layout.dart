@@ -6,6 +6,8 @@
 import 'package:fluffychat/config/themes.dart';
 import 'package:material_ui/material_ui.dart';
 
+/// MUQAM: wide screens use the Wider shell. A soft lavender wash fills the
+/// window and each column sits on it as a white rounded card.
 class TwoColumnLayout extends StatelessWidget {
   final Widget mainView;
   final Widget sideView;
@@ -23,19 +25,24 @@ class TwoColumnLayout extends StatelessWidget {
 
     return ScaffoldMessenger(
       child: Scaffold(
-        body: Row(
-          children: [
-            Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(),
-              width:
-                  FluffyThemes.columnWidth +
-                  (hasNavigationRail ? FluffyThemes.navRailWidth : 0),
-              child: mainView,
-            ),
-            Container(width: 1.0, color: theme.dividerColor),
-            Expanded(child: ClipRRect(child: sideView)),
-          ],
+        backgroundColor: theme.colorScheme.surfaceContainerLow,
+        body: SafeArea(
+          child: Row(
+            children: [
+              SizedBox(
+                width:
+                    FluffyThemes.columnWidth +
+                    (hasNavigationRail ? FluffyThemes.navRailWidth : 0) +
+                    MuqamShell.gutter,
+                // The chat list draws its own card so that the MUQAM rail can
+                // sit on the wash. Other main views get a card here.
+                child: hasNavigationRail
+                    ? mainView
+                    : MuqamShell.card(context, mainView, end: false),
+              ),
+              Expanded(child: MuqamShell.card(context, sideView)),
+            ],
+          ),
         ),
       ),
     );

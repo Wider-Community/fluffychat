@@ -1,11 +1,11 @@
 {
-    "name": "FluffyChat",
-    "short_name": "FluffyChat",
+    "name": "MUQAM",
+    "short_name": "MUQAM",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#FFFFFF",
-    "theme_color": "#41a2bc",
-    "description": "The cutest messenger in the Matrix network",
+    "background_color": "#F9F9FF",
+    "theme_color": "#4F00FF",
+    "description": "MUQAM by Wider",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

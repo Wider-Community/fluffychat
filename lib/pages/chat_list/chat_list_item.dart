@@ -50,8 +50,9 @@ class ChatListItem extends StatelessWidget {
     final directChatMatrixId = room.directChatMatrixID;
     final isDirectChat = directChatMatrixId != null;
     final hasNotifications = room.notificationCount > 0;
+    // MUQAM: the open chat is highlighted with the soft violet tint.
     final backgroundColor = activeChat
-        ? theme.colorScheme.secondaryContainer
+        ? theme.colorScheme.primaryContainer
         : null;
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
@@ -189,6 +190,7 @@ class ChatListItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       softWrap: false,
+                      style: const TextStyle(fontWeight: FontWeight.w700),
                     ),
                   ),
                   if (isMuted)

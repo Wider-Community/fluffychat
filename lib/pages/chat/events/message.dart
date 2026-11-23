@@ -14,7 +14,6 @@ import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
@@ -107,7 +106,9 @@ class Message extends StatelessWidget {
     final ownMessage = event.senderId == client.userID;
     final alignment = ownMessage ? Alignment.topRight : Alignment.topLeft;
 
-    var color = theme.colorScheme.surfaceContainerHigh;
+    // MUQAM: other people's messages sit on the soft lavender-grey of the
+    // Wider chat (--surface-2).
+    var color = theme.colorScheme.surfaceContainer;
     final displayTime =
         event.type == EventTypes.RoomCreate ||
         previousEvent == null ||
@@ -143,16 +144,8 @@ class Message extends StatelessWidget {
         : MainAxisAlignment.start;
 
     final displayEvent = event.getDisplayEvent(timeline);
-    const hardCorner = Radius.circular(3);
-    const roundedCorner = Radius.circular(AppConfig.borderRadius);
-    final borderRadius = BorderRadius.only(
-      topLeft: !ownMessage ? hardCorner : roundedCorner,
-      topRight: ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
-      bottomLeft: !ownMessage && previousEventSameSender
-          ? hardCorner
-          : roundedCorner,
-      bottomRight: ownMessage ? hardCorner : roundedCorner,
-    );
+    // MUQAM: Wider bubbles are evenly rounded rectangles (--r-md).
+    final borderRadius = BorderRadius.circular(12);
     const avatarSize = Avatar.defaultSize;
     final noBubble =
         ({
@@ -162,6 +155,16 @@ class Message extends StatelessWidget {
         }.contains(event.messageType) &&
         event.fileDescription == null &&
         !event.redacted);
+    // MUQAM: text messages show their time inside the bubble, bottom end.
+    final inlineTime =
+        !noBubble &&
+        event.status.isSent &&
+        !event.redacted &&
+        {
+          MessageTypes.Text,
+          MessageTypes.Notice,
+          MessageTypes.Emote,
+        }.contains(event.messageType);
 
     if (ownMessage) {
       color = displayEvent.status.isError
@@ -352,19 +355,13 @@ class Message extends StatelessWidget {
                                           ),
                                           child: Text(
                                             displayname,
+                                            // MUQAM: names in bold ink.
                                             style: TextStyle(
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w700,
                                               color: event.room.isDirectChat
                                                   ? Colors.transparent
-                                                  : (theme.brightness ==
-                                                            Brightness.light
-                                                        ? displayname
-                                                              .colorScheme
-                                                              .primary
-                                                        : displayname
-                                                              .colorScheme
-                                                              .primaryContainer),
-                                              fontSize: 11,
+                                                  : theme.colorScheme.onSurface,
+                                              fontSize: 14,
                                               shadows: event.room.isDirectChat
                                                   ? null
                                                   : wallpaperTextShadow,
@@ -527,15 +524,24 @@ class Message extends StatelessWidget {
                                                   );
                                                 },
                                               ),
-                                            MessageContent(
-                                              displayEvent,
-                                              textColor: textColor,
-                                              linkColor: linkColor,
-                                              onInfoTab: onInfoTab,
-                                              borderRadius: borderRadius,
-                                              timeline: timeline,
-                                              selected: selected,
-                                              bigEmojis: bigEmojis,
+                                            _InlineTime(
+                                              time: inlineTime
+                                                  ? event.originServerTs
+                                                        .localizedTimeOfDay(
+                                                          context,
+                                                        )
+                                                  : null,
+                                              color: textColor,
+                                              child: MessageContent(
+                                                displayEvent,
+                                                textColor: textColor,
+                                                linkColor: linkColor,
+                                                onInfoTab: onInfoTab,
+                                                borderRadius: borderRadius,
+                                                timeline: timeline,
+                                                selected: selected,
+                                                bigEmojis: bigEmojis,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -569,6 +575,7 @@ class Message extends StatelessWidget {
                               children: [
                                 const SizedBox(width: 8),
                                 if (event.status.isSent &&
+                                    (!inlineTime || selected) &&
                                     (displayTime ||
                                         !previousEventSameSender ||
                                         selected))
@@ -1028,6 +1035,40 @@ class __AnimateInState extends State<_AnimateIn> {
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
       child: _animationFinished ? widget.child : const SizedBox.shrink(),
+    );
+  }
+}
+
+/// MUQAM: puts the time at the bottom end of a text bubble, as in the Wider
+/// chat. On a short message it sits on the same line as the text.
+class _InlineTime extends StatelessWidget {
+  final String? time;
+  final Color color;
+  final Widget child;
+
+  const _InlineTime({
+    required this.time,
+    required this.color,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final time = this.time;
+    if (time == null) return child;
+    return Wrap(
+      alignment: WrapAlignment.end,
+      crossAxisAlignment: WrapCrossAlignment.end,
+      children: [
+        child,
+        Padding(
+          padding: const EdgeInsetsDirectional.only(end: 12, bottom: 8),
+          child: Text(
+            time,
+            style: TextStyle(fontSize: 12, color: color.withAlpha(170)),
+          ),
+        ),
+      ],
     );
   }
 }

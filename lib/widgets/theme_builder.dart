@@ -4,7 +4,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import 'package:collection/collection.dart';
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fluffychat/utils/color_value.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
@@ -94,10 +93,9 @@ class ThemeController extends State<ThemeBuilder> {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => this,
-      child: DynamicColorBuilder(
-        builder: (light, _) =>
-            widget.builder(context, themeMode, primaryColor ?? light?.primary),
-      ),
+      // MUQAM: the Wider palette is the default. The OS accent color is not
+      // used, so every MUQEM sees the same brand unless they pick a color.
+      child: widget.builder(context, themeMode, primaryColor),
     );
   }
 }

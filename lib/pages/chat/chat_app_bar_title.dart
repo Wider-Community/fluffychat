@@ -49,7 +49,8 @@ class ChatAppBarTitle extends StatelessWidget {
               name: room.getLocalizedDisplayname(
                 MatrixLocals(L10n.of(context)),
               ),
-              size: 32,
+              // MUQAM: a larger avatar, as in the Wider chat header.
+              size: FluffyThemes.isColumnMode(context) ? 52 : 40,
             ),
           ),
           const SizedBox(width: 12),
@@ -74,7 +75,10 @@ class ChatAppBarTitle extends StatelessWidget {
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],
@@ -90,7 +94,10 @@ class ChatAppBarTitle extends StatelessWidget {
                         (room.client.onSync.value != null &&
                             status.status != SyncStatus.error &&
                             room.client.prevBatch != null);
-                    final style = TextStyle(fontSize: 11);
+                    final style = TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    );
                     return AnimatedSize(
                       duration: FluffyThemes.animationDuration,
                       child: hide
@@ -119,7 +126,15 @@ class ChatAppBarTitle extends StatelessWidget {
                                         return const SizedBox.shrink();
                                       }
 
-                                      return Text(text, style: style);
+                                      // MUQAM: "Online" reads in green.
+                                      return Text(
+                                        text,
+                                        style: presence?.currentlyActive == true
+                                            ? style.copyWith(
+                                                color: const Color(0xFF15803D),
+                                              )
+                                            : style,
+                                      );
                                     },
                                   )
                                 : Row(

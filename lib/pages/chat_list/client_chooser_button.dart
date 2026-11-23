@@ -18,7 +18,10 @@ import 'chat_list.dart';
 class ClientChooserButton extends StatelessWidget {
   final ChatListController controller;
 
-  const ClientChooserButton(this.controller, {super.key});
+  /// MUQAM: show this icon instead of the own avatar (the "..." menu).
+  final Widget? icon;
+
+  const ClientChooserButton(this.controller, {this.icon, super.key});
 
   List<PopupMenuEntry<Object>> _bundleMenuItems(BuildContext context) {
     final matrix = Matrix.of(context);
@@ -184,11 +187,13 @@ class ClientChooserButton extends StatelessWidget {
           tooltip: L10n.of(context).accountsAndSettings,
           onSelected: (o) => _clientSelected(o, context),
           itemBuilder: _bundleMenuItems,
-          icon: Avatar(
-            mxContent: snapshot.data?.avatarUrl,
-            name: snapshot.data?.displayName ?? client?.userID?.localpart,
-            size: 32,
-          ),
+          icon:
+              icon ??
+              Avatar(
+                mxContent: snapshot.data?.avatarUrl,
+                name: snapshot.data?.displayName ?? client?.userID?.localpart,
+                size: 32,
+              ),
         ),
       ),
     );

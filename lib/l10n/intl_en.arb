@@ -121,7 +121,7 @@
             }
         }
     },
-    "addToSpace": "Add to space",
+    "addToSpace": "Add to a MUQAM",
     "admin": "Admin",
     "@admin": {
         "type": "String",
@@ -250,7 +250,7 @@
     "noMoreChatsFound": "No more chats found...",
     "noChatsFoundHere": "No chats found here yet. Start a new chat with someone by using the button below. ⤵️",
     "unread": "Unread",
-    "space": "Space",
+    "space": "MUQAM",
     "banFromChat": "Ban from chat",
     "@banFromChat": {
         "type": "String",
@@ -674,12 +674,12 @@
         }
     },
     "createGroup": "Create group",
-    "createNewSpace": "New space",
+    "createNewSpace": "New MUQAM",
     "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
-    "currentlyActive": "Currently active",
+    "currentlyActive": "Online",
     "@currentlyActive": {
         "type": "String",
         "placeholders": {}
@@ -986,7 +986,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "{username} invited you to FluffyChat.\n1. Visit fluffychat.im and install the app \n2. Sign up or sign in \n3. Open the invite link: \n {link}",
+    "inviteText": "{username} invited you to MUQAM.\n1. Install the MUQAM app \n2. Sign in \n3. Open the invite link: \n {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -1147,7 +1147,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "newMessageInFluffyChat": "💬 New message in FluffyChat",
+    "newMessageInFluffyChat": "💬 New message in MUQAM",
     "@newMessageInFluffyChat": {
         "type": "String",
         "placeholders": {}
@@ -1624,12 +1624,12 @@
         "type": "String",
         "placeholders": {}
     },
-    "spaceIsPublic": "Space is public",
+    "spaceIsPublic": "MUQAM is public",
     "@spaceIsPublic": {
         "type": "String",
         "placeholders": {}
     },
-    "spaceName": "Space name",
+    "spaceName": "MUQAM name",
     "@spaceName": {
         "type": "String",
         "placeholders": {}
@@ -1912,7 +1912,7 @@
     "time": "Time",
     "sender": "Sender",
     "openGallery": "Open gallery",
-    "removeFromSpace": "Remove from space",
+    "removeFromSpace": "Remove from MUQAM",
     "markAsRead": "Mark as read",
     "reportUser": "Report user",
     "reactedWith": "{sender} reacted with {reaction}",
@@ -2018,7 +2018,7 @@
     "custom": "Custom",
     "whyIsThisMessageEncrypted": "Why is this message unreadable?",
     "noKeyForThisMessage": "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.",
-    "newSpace": "New space",
+    "newSpace": "New MUQAM",
     "doNotShowAgain": "Do not show again",
     "wasDirectChatDisplayName": "Empty chat (was {oldDisplayName})",
     "@wasDirectChatDisplayName": {
@@ -2029,7 +2029,7 @@
             }
         }
     },
-    "newSpaceDescription": "Spaces allows you to consolidate your chats and build private or public communities.",
+    "newSpaceDescription": "A MUQAM gathers your chats in one place. MUQEMEN can belong to many MUQAM and wear a different hat in each.",
     "encryptThisChat": "Encrypt this chat",
     "disableEncryptionWarning": "For security reasons you can not disable encryption in a chat, where it has been enabled before.",
     "sorryThatsNotPossible": "Sorry... that is not possible",
@@ -2122,9 +2122,9 @@
     "passwordIsWrong": "Your entered password is wrong",
     "publicChatAddresses": "Public chat addresses",
     "createNewAddress": "Create new address",
-    "joinSpace": "Join space",
-    "publicSpaces": "Public spaces",
-    "addChatOrSubSpace": "Add chat or sub space",
+    "joinSpace": "Join MUQAM",
+    "publicSpaces": "Public MUQAM",
+    "addChatOrSubSpace": "Add a chat or a MUQAM inside",
     "thisDevice": "This device:",
     "initAppError": "An error occured while init the app",
     "searchIn": "Search in chat \"{chat}\"...",
@@ -2249,7 +2249,7 @@
         "type": "String",
         "count": {}
     },
-    "goToSpace": "Go to space: {space}",
+    "goToSpace": "Go to MUQAM: {space}",
     "@goToSpace": {
         "type": "String",
         "space": {}
@@ -2446,7 +2446,7 @@
     "longPressToRecordVoiceMessage": "Long press to record voice message.",
     "pause": "Pause",
     "resume": "Resume",
-    "removeFromSpaceDescription": "The chat will be removed from the space but still appear in your chat list.",
+    "removeFromSpaceDescription": "The chat will be removed from the MUQAM but still appear in your chat list.",
     "countChats": "{chats} chats",
     "@countChats": {
         "type": "String",
@@ -2456,7 +2456,7 @@
             }
         }
     },
-    "spaceMemberOf": "Space member of {spaces}",
+    "spaceMemberOf": "MUQEMEN of {spaces}",
     "@spaceMemberOf": {
         "type": "String",
         "placeholders": {
@@ -2465,7 +2465,7 @@
             }
         }
     },
-    "spaceMemberOfCanKnock": "Space member of {spaces} can knock",
+    "spaceMemberOfCanKnock": "MUQEMEN of {spaces} can request to join",
     "@spaceMemberOfCanKnock": {
         "type": "String",
         "placeholders": {
@@ -2571,11 +2571,11 @@
     "removeTag": "Remove tag",
     "tagName": "Tag name",
     "createNewTag": "Create new tag",
-    "hideRoomsInSpaces": "Hide rooms that are in a space",
+    "hideRoomsInSpaces": "Hide chats that are in a MUQAM",
     "possibleByYou": "This release was only possible thanks to your support. FluffyChat remains free, open-source, and entirely community-driven.",
     "showThumbnailsInTimeline": "Show thumbnails of images and videos",
-    "appSubtitle": "Secure [matrix] Communication",
-    "appDescription": "Communicate encrypted over the decentralized [matrix] network in an easy and accessible way for everyone.",
+    "appSubtitle": "One place, many MUQAM",
+    "appDescription": "Join your MUQAM, talk with the MUQEMEN in each one, and wear the right hat in every place.",
     "interactiveVerification": "Interactive verification",
     "interactiveVerificationDescription": "If you are next to each other or communicate via a secure channel then you can verify all devices at once by comparing a security number or emojis.",
     "countUnverifiedDevices": "{count} unverified devices in the chat.",
@@ -2656,7 +2656,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "newPassphraseDescription": "FluffyChat uses end to end encryption. To not lose your messages, please choose a strong passphrase to secure your crypto identity and your encrypted message backup.",
+    "newPassphraseDescription": "MUQAM uses end to end encryption for direct chats. To not lose your messages, please choose a strong passphrase to secure your crypto identity and your encrypted message backup.",
     "@newPassphraseDescription": {
         "type": "String",
         "placeholders": {}
@@ -2842,7 +2842,7 @@
             }
         }
     },
-    "senderHasInvitedYouToTheSpace": "{sender} has invited you to the space '{nameOrAlias}'.",
+    "senderHasInvitedYouToTheSpace": "{sender} has invited you to the MUQAM '{nameOrAlias}'.",
     "@senderHasInvitedYouToTheSpace": {
         "placeholders": {
             "sender": {
@@ -2863,5 +2863,9 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "muqamChatTitle": "Chat",
+    "typeYourMessageHere": "Type your message here",
+    "startConversation": "Start Conversation",
+    "startConversationDescription": "Choose from your existing conversations, or start a new one."
 }

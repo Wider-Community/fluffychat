@@ -9,10 +9,62 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/client_chooser_button.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:matrix/matrix.dart';
 
 import '../../widgets/matrix.dart';
+
+/// MUQAM: the "Chat" title row of the Wider chat. A bold title, a violet
+/// round button that starts a new chat, and a menu for groups and settings.
+class ChatListTitleBar extends StatelessWidget {
+  final ChatListController controller;
+
+  const ChatListTitleBar({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 20, 12, 0),
+      child: Container(
+        padding: const EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: theme.colorScheme.outlineVariant),
+          ),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                L10n.of(context).muqamChatTitle,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            IconButton.filled(
+              key: const Key('muqam_new_chat_button'),
+              tooltip: L10n.of(context).newChat,
+              style: IconButton.styleFrom(
+                backgroundColor: theme.colorScheme.primary,
+                foregroundColor: theme.colorScheme.onPrimary,
+                minimumSize: const Size.square(36),
+                fixedSize: const Size.square(36),
+                padding: EdgeInsets.zero,
+              ),
+              onPressed: () => context.go('/rooms/newprivatechat'),
+              icon: const Icon(Icons.add, size: 22),
+            ),
+            const SizedBox(width: 4),
+            ClientChooserButton(controller, icon: const Icon(Icons.more_horiz)),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
   final ChatListController controller;
@@ -35,12 +87,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 72,
       pinned: isColumnMode,
       scrolledUnderElevation: 0,
-      shape: isColumnMode
-          ? Border(bottom: BorderSide(color: theme.dividerColor, width: 1))
-          : null,
-      backgroundColor: isColumnMode
-          ? theme.colorScheme.surface.withAlpha(240)
-          : Colors.transparent,
+      backgroundColor: theme.colorScheme.surface,
       automaticallyImplyLeading: false,
       title: StreamBuilder(
         stream: client.onSyncStatus.stream,
@@ -58,18 +105,15 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
             textInputAction: TextInputAction.search,
             onChanged: (text) =>
                 controller.onSearchEnter(text, globalSearch: globalSearch),
+            // MUQAM: an outlined pill search field, as in the Wider chat.
             decoration: InputDecoration(
               filled: true,
-              fillColor: theme.colorScheme.secondaryContainer,
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(99),
-              ),
+              fillColor: theme.colorScheme.surface,
               hintText: hide
-                  ? L10n.of(context).searchChatsRooms
+                  ? L10n.of(context).search
                   : status.calcLocalizedString(context),
               hintStyle: TextStyle(
-                color: theme.colorScheme.onPrimaryContainer,
+                color: theme.colorScheme.onSurfaceVariant,
                 fontWeight: FontWeight.normal,
               ),
 
@@ -79,7 +123,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                             tooltip: L10n.of(context).cancel,
                             icon: const Icon(Icons.close_outlined),
                             onPressed: controller.cancelSearch,
-                            color: theme.colorScheme.onPrimaryContainer,
+                            color: theme.colorScheme.onSurfaceVariant,
                           )
                         : isColumnMode ||
                               (controller.spaces.isEmpty &&
@@ -89,7 +133,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                             onPressed: controller.startSearch,
                             icon: Icon(
                               Icons.search_outlined,
-                              color: theme.colorScheme.onPrimaryContainer,
+                              color: theme.colorScheme.onSurfaceVariant,
                             ),
                           )
                         : IconButton(
@@ -97,7 +141,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                             onPressed: controller.openNavrail,
                             icon: Icon(
                               Icons.menu,
-                              color: theme.colorScheme.onPrimaryContainer,
+                              color: theme.colorScheme.onSurfaceVariant,
                             ),
                           )
                   : SizedBox(
@@ -139,7 +183,7 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                               maxLines: 2,
                             ),
                           )
-                  : SizedBox(width: 0, child: ClientChooserButton(controller)),
+                  : null,
             ),
           );
         },

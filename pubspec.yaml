@@ -114,6 +114,19 @@ flutter:
     - assets/logo/mini/
     - assets/sounds/
     - assets/vodozemac/0.9.0/
+  # MUQAM: Wider type. Titillium Web for Latin, Cairo for Arabic (both SIL OFL 1.1).
+  fonts:
+    - family: TitilliumWeb
+      fonts:
+        - asset: assets/fonts/muqam/TitilliumWeb-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/muqam/TitilliumWeb-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/muqam/TitilliumWeb-Bold.ttf
+          weight: 700
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/muqam/Cairo.ttf
 
 hooks:
   user_defines:
@@ -135,7 +148,7 @@ flutter_launcher_icons:
     generate: true
     image_path: assets/logo/img/logo_standalone.png
     background_color: "#FFFFFF"
-    theme_color: "#41a2bc"
+    theme_color: "#4F00FF"
 
 # Guidelines for adding a dependency override:
 # 1. Don't do it if you can avoid it or fix it upstream in a manageable time

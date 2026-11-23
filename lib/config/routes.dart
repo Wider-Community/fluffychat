@@ -144,7 +144,7 @@ abstract class AppRoutes {
             context,
             state,
             FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
+                ? const EmptyPage(startConversation: true)
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
                     activeSpace: state.uri.queryParameters['spaceId'],

@@ -327,7 +327,7 @@
             }
         }
     },
-    "currentlyActive": "نشطٌ حاليا",
+    "currentlyActive": "متصل",
     "@currentlyActive": {
         "type": "String",
         "placeholders": {}
@@ -540,7 +540,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteText": "دعاك {username} إلى FluffyChat.\n1. قم بزيارة موقع fluffychat.im وقم بتثبيت التطبيق\n2. قم بإنشاءحساب أو تسجيل الدخول\n3. افتح رابط الدعوة:\n {link}",
+    "inviteText": "دعاك {username} إلى مُقام.\n1. ثبّت تطبيق مُقام\n2. سجّل الدخول\n3. افتح رابط الدعوة:\n {link}",
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -672,7 +672,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "newMessageInFluffyChat": "💬 رسالة جديدة في FluffyChat",
+    "newMessageInFluffyChat": "💬 رسالة جديدة في مُقام",
     "@newMessageInFluffyChat": {
         "type": "String",
         "placeholders": {}
@@ -1255,7 +1255,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "createNewSpace": "مساحة جديدة",
+    "createNewSpace": "مُقام جديد",
     "@createNewSpace": {
         "type": "String",
         "placeholders": {}
@@ -1410,7 +1410,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "addToSpace": "أضف إلى المساحة",
+    "addToSpace": "أضف إلى مُقام",
     "addEmail": "أضف بريدًا إلكترونيًا",
     "@addEmail": {
         "type": "String",
@@ -1510,7 +1510,7 @@
             }
         }
     },
-    "spaceIsPublic": "عام في المساحة",
+    "spaceIsPublic": "المُقام عام",
     "@spaceIsPublic": {
         "type": "String",
         "placeholders": {}
@@ -1530,7 +1530,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "spaceName": "اسم المساحة",
+    "spaceName": "اسم المُقام",
     "@spaceName": {
         "type": "String",
         "placeholders": {}
@@ -1616,7 +1616,7 @@
         "placeholders": {}
     },
     "repeatPassword": "كرّر كلمة السر",
-    "removeFromSpace": "أزل من المساحة",
+    "removeFromSpace": "أزل من المُقام",
     "unverified": "غير مؤكد",
     "whoCanPerformWhichAction": "من يستطيع القيام بأي عمل",
     "@whoCanPerformWhichAction": {
@@ -1817,7 +1817,7 @@
             }
         }
     },
-    "newSpace": "مساحة جديدة",
+    "newSpace": "مُقام جديد",
     "commandHint_markasgroup": "وضع علامة كمجموعة",
     "hugContent": "{senderName} يعانقك",
     "@hugContent": {
@@ -1868,7 +1868,7 @@
     },
     "disableEncryptionWarning": "لأسباب أمنية ، لا يمكنك تعطيل التشفير في المحادثة ، حيث تم تمكينه من قبل.",
     "reportErrorDescription": "😭 أوه لا. هناك خطأ ما. إذا كنت تريد، يمكنك الإبلاغ عن هذا الخطأ إلى المطورين.",
-    "newSpaceDescription": "يسمح لك تطبيق المساحات بتوحيد دردشاتك وبناء مجتمعات خاصة أو عامة.",
+    "newSpaceDescription": "يجمع المُقام محادثاتك في مكان واحد. يمكن للمقيمين الانتماء إلى أكثر من مُقام بدور مختلف في كل منها.",
     "sorryThatsNotPossible": "معذرة... هذا غير ممكن",
     "openLinkInBrowser": "فتح الرابط في المتصفح",
     "reopenChat": "إعادة فتح المحادثة",
@@ -1976,7 +1976,7 @@
     "databaseMigrationTitle": "تم تحسين قاعدة البيانات",
     "databaseMigrationBody": "انتظر من فضلك. قد يستغرق ذلك بعض الوقت.",
     "thisDevice": "هذا الجهاز:",
-    "publicSpaces": "مساحة عامة",
+    "publicSpaces": "مُقامات عامة",
     "passwordIsWrong": "كلمة السر للدخول خاطئة",
     "pleaseEnterYourCurrentPassword": "من فضلك أدخل كلمة السر الحالية",
     "nothingFound": "لم نجد شيئاً.",
@@ -1984,9 +1984,9 @@
     "passwordsDoNotMatch": "كلمات المرور لا تتطابق",
     "select": "اختر",
     "pleaseChooseAStrongPassword": "الرجاء اختيار كلمة مرور قوية",
-    "addChatOrSubSpace": "إضافة دردشة أو مساحة فرعية",
+    "addChatOrSubSpace": "أضف محادثة أو مُقامًا داخليًا",
     "leaveEmptyToClearStatus": "اتركه فارغًا لمسح حالتك.",
-    "joinSpace": "انضم إلى المساحة",
+    "joinSpace": "انضم إلى المُقام",
     "searchForUsers": "ابحث عن @users...",
     "initAppError": "حدث خطأ بداخل التطبيق",
     "sessionLostBody": "جلستك مفقودة يرجى إبلاغ المطورين بهذا الخطأ في {url}. رسالة الخطأ هي: {error}",
@@ -2139,9 +2139,9 @@
     "swipeRightToLeftToReply": "اسحب من اليمين إلى اليسار للرد",
     "noMoreChatsFound": "لم يتم العثور على دردشات...",
     "unread": "غير المقروءة",
-    "space": "المساحة",
+    "space": "مُقام",
     "markAsUnread": "تحديد كغير مقروء",
-    "goToSpace": "انتقل إلى المساحة: {space}",
+    "goToSpace": "انتقل إلى المُقام: {space}",
     "@goToSpace": {
         "type": "String",
         "space": {}
@@ -2371,7 +2371,7 @@
     "longPressToRecordVoiceMessage": "اضغط مطولاً لتسجيل رسالة صوتية.",
     "pause": "توقف مؤقت",
     "resume": "استئناف",
-    "removeFromSpaceDescription": "ستتم إزالة المحادثة من المساحة ولكنها ستظل تظهر في قائمة المحادثات الخاصة بك.",
+    "removeFromSpaceDescription": "ستُزال المحادثة من المُقام ولكنها ستظل تظهر في قائمة محادثاتك.",
     "countChats": "{chats} المحادثات",
     "@countChats": {
         "type": "String",
@@ -2381,7 +2381,7 @@
             }
         }
     },
-    "spaceMemberOf": "عضو مساحة في{spaces}",
+    "spaceMemberOf": "مقيمو {spaces}",
     "@spaceMemberOf": {
         "type": "String",
         "placeholders": {
@@ -2412,7 +2412,7 @@
     "skipChatBackup": "تخطي النسخ الاحتياطي للمحادثة",
     "skipChatBackupWarning": "هل أنت متأكد؟ بدون تفعيل خاصية النسخ الاحتياطي للمحادثات، قد تفقد الوصول إلى رسائلك إذا قمت بتغيير جهازك.",
     "noMoreResultsFound": "لم يتم العثور على نتائج أخرى",
-    "spaceMemberOfCanKnock": "عضو مساحة {spaces} يستطيع يطرق",
+    "spaceMemberOfCanKnock": "يمكن لمقيمي {spaces} طلب الانضمام",
     "@spaceMemberOfCanKnock": {
         "type": "String",
         "placeholders": {
@@ -2477,11 +2477,11 @@
     "removeTag": "إزالة الوسم",
     "tagName": "اسم الوسم",
     "createNewTag": "إنشاء وسم جديد",
-    "hideRoomsInSpaces": "إخفاء الغرف الموجودة في مساحة",
+    "hideRoomsInSpaces": "إخفاء المحادثات الموجودة في مُقام",
     "possibleByYou": "لم يكن هذا الإصدار ليتحقق لولا دعمكم. سيظل FluffyChat مجانيًا ومفتوح المصدر، ويعتمد كليًا على جهود المجتمع.",
     "showThumbnailsInTimeline": "عرض الصور المصغرة للصور ومقاطع الفيديو",
-    "appSubtitle": "اتصال آمن [مصفوفة]",
-    "appDescription": "التواصل بشكل مشفر عبر شبكة [المصفوفة] اللامركزية بطريقة سهلة ومتاحة للجميع.",
+    "appSubtitle": "مكان واحد، ومُقامات كثيرة",
+    "appDescription": "انضم إلى مُقاماتك، وتحدث مع المقيمين في كل منها، وبالدور المناسب في كل مكان.",
     "interactiveVerification": "التحقق التفاعلي",
     "interactiveVerificationDescription": "إذا كنتم بجانب بعضكم البعض أو تتواصلون عبر قناة آمنة، فيمكنكم التحقق من جميع الأجهزة في وقت واحد عن طريق مقارنة رقم الأمان أو الرموز التعبيرية.",
     "countUnverifiedDevices": "{count}الأجهزة غير الموثقة في المحادثة.",
@@ -2552,7 +2552,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "newPassphraseDescription": "يستخدم تطبيق FluffyChat التشفير التام بين الطرفين. ولضمان عدم فقدان رسائلك، يُرجى اختيار عبارة مرور قوية لحماية هويتك الرقمية ونسخة احتياطية من رسائلك المشفرة.",
+    "newPassphraseDescription": "يستخدم مُقام التشفير التام بين الطرفين في المحادثات المباشرة. ولضمان عدم فقدان رسائلك، يُرجى اختيار عبارة مرور قوية لحماية هويتك الرقمية ونسخة احتياطية من رسائلك المشفرة.",
     "@newPassphraseDescription": {
         "type": "String",
         "placeholders": {}
@@ -2760,5 +2760,9 @@
             }
         }
     },
-    "toggleMicrophone": "تشغيل/إيقاف الميكروفون"
+    "toggleMicrophone": "تشغيل/إيقاف الميكروفون",
+    "muqamChatTitle": "المحادثات",
+    "typeYourMessageHere": "اكتب رسالتك هنا",
+    "startConversation": "ابدأ محادثة",
+    "startConversationDescription": "اختر من محادثاتك الحالية، أو ابدأ محادثة جديدة."
 }

@@ -78,6 +78,7 @@ class ChatListViewBody extends StatelessWidget {
         return CustomScrollView(
           controller: controller.scrollController,
           slivers: [
+            SliverToBoxAdapter(child: ChatListTitleBar(controller: controller)),
             ChatListHeader(controller: controller),
             SliverList(
               delegate: SliverChildListDelegate([
@@ -151,6 +152,10 @@ class ChatListViewBody extends StatelessWidget {
                                         .setActiveFilter(filter, null),
                                     label: Text(
                                       filter.toLocalizedString(context),
+                                      style: _chipLabelStyle(
+                                        theme,
+                                        filter == controller.activeFilter,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -168,7 +173,13 @@ class ChatListViewBody extends StatelessWidget {
                                   ActiveFilter.tag,
                                   entry.key,
                                 ),
-                                label: Text(entry.key.replaceFirst('u.', '')),
+                                label: Text(
+                                  entry.key.replaceFirst('u.', ''),
+                                  style: _chipLabelStyle(
+                                    theme,
+                                    entry.key == controller.activeTag,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -259,6 +270,14 @@ class ChatListViewBody extends StatelessWidget {
     );
   }
 }
+
+/// MUQAM: selected filter is white bold text on violet, others are muted.
+TextStyle _chipLabelStyle(ThemeData theme, bool selected) => TextStyle(
+  color: selected
+      ? theme.colorScheme.onPrimary
+      : theme.colorScheme.onSurfaceVariant,
+  fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
+);
 
 class PublicRoomsHorizontalList extends StatelessWidget {
   const PublicRoomsHorizontalList({super.key, required this.publicRooms});

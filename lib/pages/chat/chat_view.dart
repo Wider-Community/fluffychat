@@ -82,11 +82,6 @@ class ChatView extends StatelessWidget {
               key: Key('chat_page'),
               extendBodyBehindAppBar: true,
               appBar: AppBar(
-                shape: FluffyThemes.isColumnMode(context)
-                    ? Border(
-                        bottom: BorderSide(color: theme.dividerColor, width: 1),
-                      )
-                    : null,
                 actionsIconTheme: IconThemeData(
                   color: controller.selectedEvents.isEmpty
                       ? null
@@ -396,6 +391,8 @@ class ChatView extends StatelessWidget {
                                           controller.room.membership !=
                                               Membership.invite
                                     ? const SizedBox.shrink()
+                                    // MUQAM: the composer is a soft pill
+                                    // with a thin lavender outline.
                                     : Material(
                                         clipBehavior: Clip.hardEdge,
                                         color:
@@ -405,8 +402,18 @@ class ChatView extends StatelessWidget {
                                                   .tertiaryContainer
                                             : theme
                                                   .colorScheme
-                                                  .surfaceContainer,
-                                        borderRadius: BorderRadius.circular(32),
+                                                  .surfaceContainerLow,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            32,
+                                          ),
+                                          side: BorderSide(
+                                            color: theme
+                                                .colorScheme
+                                                .primaryContainer,
+                                            width: 1.5,
+                                          ),
+                                        ),
                                         child:
                                             controller.room.membership ==
                                                 .invite
