@@ -2574,8 +2574,8 @@
     "hideRoomsInSpaces": "Hide chats that are in a MUQAM",
     "possibleByYou": "This release was only possible thanks to your support. FluffyChat remains free, open-source, and entirely community-driven.",
     "showThumbnailsInTimeline": "Show thumbnails of images and videos",
-    "appSubtitle": "One place, many MUQAM",
-    "appDescription": "Join your MUQAM, talk with the MUQEMEN in each one, and wear the right hat in every place.",
+    "appSubtitle": "Take your place.",
+    "appDescription": "One account for every MUQAM you belong to. Talk with the MUQEMEN in each, and move between them freely.",
     "interactiveVerification": "Interactive verification",
     "interactiveVerificationDescription": "If you are next to each other or communicate via a secure channel then you can verify all devices at once by comparing a security number or emojis.",
     "countUnverifiedDevices": "{count} unverified devices in the chat.",
@@ -2869,5 +2869,6 @@
     "startConversation": "Start Conversation",
     "startConversationDescription": "Choose from your existing conversations, or start a new one.",
     "members": "Members",
-    "callsNotSetUpOnServer": "Calls are not set up on this server yet."
+    "callsNotSetUpOnServer": "Calls are not set up on this server yet.",
+    "muqamPromiseSecond": "Wear the right hat in every MUQAM."
 }

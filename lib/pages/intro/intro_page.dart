@@ -38,9 +38,8 @@ class IntroPage extends StatelessWidget {
     return LoginScaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: addMultiAccount
-            ? Text(L10n.of(context).addAccount)
-            : Text(AppSettings.applicationName.value),
+        // MUQAM: the lockup below names the app, so the bar stays empty.
+        title: addMultiAccount ? Text(L10n.of(context).addAccount) : null,
         actions: [
           PopupMenuButton(
             useRootNavigator: true,
@@ -109,32 +108,58 @@ class IntroPage extends StatelessWidget {
                     child: IntrinsicHeight(
                       child: Column(
                         children: [
-                          Container(
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.all(32.0),
+                          // MUQAM: the Within mark and wordmark, no circle,
+                          // then the promise in two beats (brand voice).
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(32, 56, 32, 40),
                             child: Hero(
                               tag: 'info-logo',
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(128),
-                                child: Image.asset(
-                                  './assets/logo/mini/logo_mini.png',
-                                  width: 128,
-                                  height: 128,
-                                ),
-                              ),
+                              child: _MuqamLockup(),
                             ),
                           ),
-                          Text(
-                            L10n.of(context).appSubtitle,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          const SizedBox(height: 8),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: Text(
-                              welcomeText ?? L10n.of(context).appDescription,
-                              textAlign: TextAlign.center,
+                            padding: const EdgeInsets.symmetric(horizontal: 32),
+                            child: Column(
+                              children: [
+                                Text(
+                                  L10n.of(context).appSubtitle,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    height: 1.1,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: -0.5,
+                                    color: theme.colorScheme.onSurface,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  L10n.of(context).muqamPromiseSecond,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.w600,
+                                    color: theme.colorScheme.onSurfaceVariant,
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                ConstrainedBox(
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 420,
+                                  ),
+                                  child: Text(
+                                    welcomeText ??
+                                        L10n.of(context).appDescription,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      height: 1.5,
+                                      color: theme.colorScheme.onSurfaceVariant,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           const Spacer(),
@@ -192,6 +217,39 @@ class IntroPage extends StatelessWidget {
                 );
               },
             ),
+    );
+  }
+}
+
+/// MUQAM: the Within mark beside the MUQAM wordmark, drawn with no circle.
+class _MuqamLockup extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final dark = theme.brightness == Brightness.dark;
+    // The lockup reads left to right in every language.
+    return Row(
+      mainAxisSize: .min,
+      textDirection: TextDirection.ltr,
+      spacing: 16,
+      children: [
+        Image.asset(
+          dark
+              ? './assets/logo/mini/muqam_mark_lapis.png'
+              : './assets/logo/mini/muqam_mark_deep_lapis.png',
+          height: 44,
+          semanticLabel: 'MUQAM',
+        ),
+        Text(
+          'MUQAM',
+          style: TextStyle(
+            fontSize: 34,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 6,
+            color: theme.colorScheme.onSurface,
+          ),
+        ),
+      ],
     );
   }
 }
