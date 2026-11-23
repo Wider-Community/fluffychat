@@ -2764,5 +2764,7 @@
     "muqamChatTitle": "المحادثات",
     "typeYourMessageHere": "اكتب رسالتك هنا",
     "startConversation": "ابدأ محادثة",
-    "startConversationDescription": "اختر من محادثاتك الحالية، أو ابدأ محادثة جديدة."
+    "startConversationDescription": "اختر من محادثاتك الحالية، أو ابدأ محادثة جديدة.",
+    "members": "المقيمون",
+    "callsNotSetUpOnServer": "المكالمات غير مفعّلة على هذا الخادم بعد."
 }

@@ -20,6 +20,7 @@ import 'package:fluffychat/widgets/chat_settings_popup_menu.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/pulsating_widget.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:matrix/matrix.dart';
 
@@ -212,6 +213,16 @@ class ChatView extends StatelessWidget {
                         ],
                       ),
                   ] else if (!controller.room.isArchived) ...[
+                    // MUQAM: group chats always show a members icon.
+                    if (!controller.room.isDirectChat)
+                      IconButton(
+                        key: const Key('muqam_members_button'),
+                        icon: const Icon(Icons.group_outlined),
+                        tooltip: L10n.of(context).members,
+                        onPressed: () => context.go(
+                          '/rooms/${controller.room.id}/details/members',
+                        ),
+                      ),
                     if (hasActiveGroupCall)
                       PulsatingWidget(
                         color: theme.colorScheme.error,
@@ -241,11 +252,25 @@ class ChatView extends StatelessWidget {
                           ),
                         ),
                       )
-                    else if (controller.room.hasPermissionForMatrixRtcCall &&
-                        controller.supportLiveKitCalls)
+                    // MUQAM: the call icon is always visible next to the
+                    // members icon. When the server has no call service yet,
+                    // tapping it says so instead of hiding the icon.
+                    else
                       IconButton(
-                        icon: Icon(Icons.call_outlined),
-                        onPressed: controller.startOrJoinVideoCall,
+                        key: const Key('muqam_call_button'),
+                        icon: const Icon(Icons.call_outlined),
+                        tooltip: L10n.of(context).startCall,
+                        onPressed: !controller.supportLiveKitCalls
+                            ? () => ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    L10n.of(context).callsNotSetUpOnServer,
+                                  ),
+                                ),
+                              )
+                            : controller.room.hasPermissionForMatrixRtcCall
+                            ? controller.startOrJoinVideoCall
+                            : null,
                       ),
                     ChatSettingsPopupMenu(controller.room, true),
                   ],

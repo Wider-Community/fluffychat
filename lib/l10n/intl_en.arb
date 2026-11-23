@@ -2867,5 +2867,7 @@
     "muqamChatTitle": "Chat",
     "typeYourMessageHere": "Type your message here",
     "startConversation": "Start Conversation",
-    "startConversationDescription": "Choose from your existing conversations, or start a new one."
+    "startConversationDescription": "Choose from your existing conversations, or start a new one.",
+    "members": "Members",
+    "callsNotSetUpOnServer": "Calls are not set up on this server yet."
 }
