@@ -2884,5 +2884,6 @@
     "muqamInviteCodeInvalid": "This invite code is not valid.",
     "muqamCreateAccount": "Create account",
     "muqamNoAccount": "New to MUQAM?",
-    "muqamHaveAccount": "Already have an account?"
+    "muqamHaveAccount": "Already have an account?",
+    "passwordChangedSignInWithUserName": "Your password has been changed. Sign in with your user name and the new password."
 }

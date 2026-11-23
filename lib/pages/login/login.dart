@@ -244,12 +244,21 @@ class LoginController extends State<Login> {
     );
     if (!mounted) return;
     if (success.error == null) {
-      scaffoldMessenger.showSnackBar(
-        SnackBar(content: Text(l10n.passwordHasBeenChanged)),
-      );
-      usernameController.text = input;
+      // MUQAM: the server signs people in by user name, not by email, so
+      // only sign in straight away when a user name is already typed.
       passwordController.text = password;
-      login();
+      final username = usernameController.text.trim();
+      if (username.isNotEmpty && !username.isEmail) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text(l10n.passwordHasBeenChanged)),
+        );
+        login();
+      } else {
+        usernameController.clear();
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text(l10n.passwordChangedSignInWithUserName)),
+        );
+      }
     }
   }
 

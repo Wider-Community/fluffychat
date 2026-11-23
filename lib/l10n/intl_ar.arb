@@ -2781,5 +2781,6 @@
     "muqamInviteCodeInvalid": "رمز الدعوة هذا غير صالح.",
     "muqamCreateAccount": "إنشاء الحساب",
     "muqamNoAccount": "جديد في مُقام؟",
-    "muqamHaveAccount": "لديك حساب بالفعل؟"
+    "muqamHaveAccount": "لديك حساب بالفعل؟",
+    "passwordChangedSignInWithUserName": "تم تغيير كلمة المرور. سجّل الدخول باسم المستخدم وكلمة المرور الجديدة."
 }
