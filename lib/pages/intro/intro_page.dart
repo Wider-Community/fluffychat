@@ -110,7 +110,7 @@ class IntroPage extends StatelessWidget {
                     child: IntrinsicHeight(
                       child: Column(
                         children: [
-                          // MUQAM: the Within mark and wordmark, no circle,
+                          // MUQAM: the MUQAM mark and wordmark, no circle,
                           // then the promise in two beats (brand voice).
                           Padding(
                             padding: const EdgeInsets.fromLTRB(32, 56, 32, 40),

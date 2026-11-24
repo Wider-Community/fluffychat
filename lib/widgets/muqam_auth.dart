@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:matrix/matrix.dart';
 
-/// MUQAM: the Within mark beside the MUQAM wordmark, drawn with no circle.
+/// MUQAM: the MUQAM mark (The Meeting) beside the MUQAM wordmark, no circle.
 class MuqamLockup extends StatelessWidget {
   final double markHeight;
   final double fontSize;
